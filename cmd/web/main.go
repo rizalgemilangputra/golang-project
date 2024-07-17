@@ -10,7 +10,7 @@ func main() {
 	db := config.NewGorm(viper, logger)
 	app := config.NewGin(viper)
 
-	config.Bootstrap(&config.BootstrapConfig{
+	config.NewApp(&config.App{
 		App:    app,
 		Db:     db,
 		Logger: logger,
