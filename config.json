@@ -1,0 +1,14 @@
+{
+    "database": {
+        "host": "localhost",
+        "port": "5432",
+        "database": "sipd_jabar_2022",
+        "username": "postgres",
+        "password": "postgres",
+        "sslMode": "disable",
+        "timeZone": "Asia/Jakarta"
+    },
+    "log": {
+        "level": 6
+    }
+}
