@@ -10,10 +10,10 @@ import (
 
 type Modules struct {
 	App    *gin.Engine
-	Db     *gorm.DB
+	DB     *gorm.DB
 	Logger *logrus.Logger
 }
 
 func (m *Modules) Setup() {
-	auth.NewAuthModule(m.App)
+	auth.NewAuth(m.App, m.DB)
 }

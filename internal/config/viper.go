@@ -16,7 +16,7 @@ func NewViper() *viper.Viper {
 
 	err := config.ReadInConfig()
 	if err != nil {
-		panic(fmt.Sprintf("fatal error config file: %w \n", err))
+		panic(fmt.Sprintf("fatal error config file: %s \n", err))
 	}
 
 	return config

@@ -11,15 +11,15 @@ import (
 
 type App struct {
 	App    *gin.Engine
-	Db     *gorm.DB
+	DB     *gorm.DB
 	Logger *logrus.Logger
 	Viper  *viper.Viper
 }
 
-func NewApp(app *App) {
+func (app *App) Create() {
 	modules := modules.Modules{
 		App:    app.App,
-		Db:     app.Db,
+		DB:     app.DB,
 		Logger: app.Logger,
 	}
 	modules.Setup()

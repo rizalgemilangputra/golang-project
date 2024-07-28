@@ -1,13 +1,13 @@
 package http
 
-import "github.com/gin-gonic/gin"
+import (
+	"golang-project/internal/modules/auth/delivery/http/handler"
 
-func NewRoute(app *gin.Engine) *gin.Engine {
-	app.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+	"github.com/gin-gonic/gin"
+)
 
+func NewRoute(app *gin.Engine, handler *handler.Handler) *gin.Engine {
+	app.POST("/register", handler.Register)
+	app.POST("/login")
 	return app
 }

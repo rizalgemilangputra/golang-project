@@ -2,7 +2,7 @@
     "database": {
         "host": "localhost",
         "port": "5432",
-        "database": "sipd_jabar_2022",
+        "database": "golang-test",
         "username": "postgres",
         "password": "postgres",
         "sslMode": "disable",

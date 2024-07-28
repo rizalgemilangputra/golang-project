@@ -2,18 +2,31 @@ package auth
 
 import (
 	"golang-project/internal/modules/auth/delivery/http"
+	"golang-project/internal/modules/auth/delivery/http/handler"
+	"golang-project/internal/modules/auth/repository"
+	"golang-project/internal/modules/auth/usecase"
 
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
-type AuthModule struct {
-	Http *gin.Engine
+type Auth struct {
+	App        *gin.Engine
+	Handler    *handler.Handler
+	Repository *repository.Repository
 }
 
-func NewAuthModule(app *gin.Engine) *AuthModule {
-	var http = http.NewRoute(app)
+func NewAuth(app *gin.Engine, db *gorm.DB) *Auth {
+	var (
+		repository = repository.NewRepository(db)
+		usecase    = usecase.NewUsecase(repository)
+		handler    = handler.NewHandler(app, usecase)
+		route      = http.NewRoute(app, handler)
+	)
 
-	return &AuthModule{
-		Http: http,
+	return &Auth{
+		App:        route,
+		Handler:    handler,
+		Repository: repository,
 	}
 }
