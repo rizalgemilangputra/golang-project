@@ -1,7 +1,7 @@
 package config
 
 import (
-	"golang-project/internal/delivery/http/route"
+	"golang-project/internal/modules"
 
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
@@ -9,18 +9,18 @@ import (
 	"gorm.io/gorm"
 )
 
-type BootstrapConfig struct {
+type App struct {
 	App    *gin.Engine
-	Db     *gorm.DB
+	DB     *gorm.DB
 	Logger *logrus.Logger
 	Viper  *viper.Viper
 }
 
-func Bootstrap(config *BootstrapConfig) {
-
-	routeConfig := route.RouteConfig{
-		App: config.App,
+func (app *App) Create() {
+	modules := modules.Modules{
+		App:    app.App,
+		DB:     app.DB,
+		Logger: app.Logger,
 	}
-
-	routeConfig.Setup()
+	modules.Setup()
 }

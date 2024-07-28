@@ -10,12 +10,13 @@ func main() {
 	db := config.NewGorm(viper, logger)
 	app := config.NewGin(viper)
 
-	config.Bootstrap(&config.BootstrapConfig{
+	config := config.App{
 		App:    app,
-		Db:     db,
+		DB:     db,
 		Logger: logger,
 		Viper:  viper,
-	})
+	}
+	config.Create()
 
 	app.Run(":8080")
 }
