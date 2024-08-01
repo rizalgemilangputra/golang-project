@@ -2,9 +2,9 @@
     "database": {
         "host": "localhost",
         "port": "5432",
-        "database": "golang-test",
+        "database": "golang_test",
         "username": "postgres",
-        "password": "postgres",
+        "password": "root",
         "sslMode": "disable",
         "timeZone": "Asia/Jakarta"
     },
